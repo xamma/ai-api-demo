@@ -7,8 +7,7 @@ RUN apt update && apt install -y python3 python3-pip
 COPY src/requirements.txt /opt/requirements.txt
 RUN pip install --no-cache-dir -r /opt/requirements.txt
 
-COPY src/torch_requirements.txt /opt/torch_requirements.txt
-RUN pip install --no-cache-dir -r /opt/torch_requirements.txt
+RUN pip3 install numpy --pre torch torchvision --force-reinstall --index-url https://download.pytorch.org/whl/cu126
 
 COPY src/main /app
 
